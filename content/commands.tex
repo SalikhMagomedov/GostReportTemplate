@@ -39,6 +39,13 @@
 \newtheorem{remarkrus}{Замечание}
 \newtheorem{corollaryrus}{Следствие}
 
+\newcommand{\ifNotEmpty}[2] {
+    \def\temp{#1}
+    \ifx\temp\empty \empty \else #2 \fi
+}
 
-
-\def\Ker{\operatorname{Ker}}
+\newcommand{\row}[3][]{
+    \small{#2}&
+    \centering{\rule[-2mm]{5cm}{0.2mm}} \newline \centering \footnotesize{{подпись, дата}} &
+    #3 \newline \small{{\ifNotEmpty{#1}{(#1)}}} \\ & & \\
+}
