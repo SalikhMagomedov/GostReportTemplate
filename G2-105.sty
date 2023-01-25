@@ -229,11 +229,13 @@
 \if@usepscyr
   \RequirePackage[math]{pscyr}
 \fi
+\RequirePackage{cmap}
 \RequirePackage{mathtext}%������� ����� � ��������
+\RequirePackage{tempora}
 \RequirePackage[T2A]{fontenc}
 \RequirePackage[\Gost@encoding]{inputenc}
 \RequirePackage[english,russian]{babel}
-\RequirePackage{flafter}
+% \RequirePackage{flafter}
 
 % 4.2.7 ������������
 
@@ -334,7 +336,8 @@
 % 4.3.1 - 4.3.3 �����������
 
 \newcommand\@makecaption{}
-\RequirePackage[center, labelsep=endash]{caption}
+% \RequirePackage[center, labelsep=endash]{caption}
+\RequirePackage[center]{caption2}
 
 \def\fps@figure{bph}
 \def\ftype@figure{1}
