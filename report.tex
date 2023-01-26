@@ -1,82 +1,84 @@
-\documentclass[utf8,usehyperref,12pt]{G7-32}
-\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}
-% \usepackage[T2A]{fontenc}
-% \usepackage[utf8]{inputenc}
-% \usepackage[english,russian]{babel}
-\usepackage{float}
-\usepackage{graphicx}
-% \usepackage{cmap}
-\usepackage{color}
+\documentclass[]{G7-32-2017}
+% \usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}
+% % \usepackage[T2A]{fontenc}
+% % \usepackage[utf8]{inputenc}
+% % \usepackage[english,russian]{babel}
+% \usepackage{float}
+% \usepackage{graphicx}
+% % \usepackage{cmap}
+% \usepackage{color}
 
 
-\usepackage[all,cmtip]{xy}
-\graphicspath{{pictures/}}
+% \usepackage[all,cmtip]{xy}
+% \graphicspath{{pictures/}}
 
-% \usepackage{subcaption}
-\usepackage{cite}
+% % \usepackage{subcaption}
+% \usepackage{cite}
 
-% \usepackage{dsfont}
-% \usepackage{mathrsfs}
+% % \usepackage{dsfont}
+% % \usepackage{mathrsfs}
 
-\TableInChaper
-\PicInChaper
-\setlength\GostItemGap{2mm}
+% \TableInChaper
+% \PicInChaper
+% \setlength\GostItemGap{2mm}
 
 
-\NirOrgLongName{\MakeUppercase{Название организации}}
+% \NirOrgLongName{\MakeUppercase{Название организации}}
 
-\NirBoss{Должность руководителя организации}{ФИО} %% Заказчик, утверждающий НИР
-\NirManager{Должность руководителя НИР}{ФИО}
+% \NirBoss{Должность руководителя организации}{ФИО} %% Заказчик, утверждающий НИР
+% \NirManager{Должность руководителя НИР}{ФИО}
 
-\NirTown{[ГОРОД],}
-\NirYear{[ГОД ОТЧЕТА]}
+% \NirTown{[ГОРОД],}
+% \NirYear{[ГОД ОТЧЕТА]}
 
-\NirUdk{УДК \No }
-\NirGosNo{Регистрационный \No }
+% \NirUdk{УДК \No }
+% \NirGosNo{Регистрационный \No }
 
-\NirStage{
-}{[ТИП ОТЧЕТА], за [ГОД] г.}{
-}
+% \NirStage{
+% }{[ТИП ОТЧЕТА], за [ГОД] г.}{
+% }
 
-\bibliographystyle{unsrt}
+% \bibliographystyle{unsrt}
 
-\input{content/commands.tex}
-\usepackage[shortlabels]{enumitem}
+% \input{content/commands.tex}
+% \usepackage[shortlabels]{enumitem}
 
-%%%%%%%<------------- НАЧАЛО ДОКУМЕНТА
+% %%%%%%%<------------- НАЧАЛО ДОКУМЕНТА
 \begin{document}
 
-% \usefont{T2A}{ftm}{m}{} %%% Использование шрифтов Т2 для возможности скопировать текст из PDF-файлов.
+Example text.
 
-\frontmatter %%% <-- это выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы типа Исполнители, Обозначения и прочее
+% % \usefont{T2A}{ftm}{m}{} %%% Использование шрифтов Т2 для возможности скопировать текст из PDF-файлов.
 
-\NirTitle{\input{content/annot.tex}}
+% \frontmatter %%% <-- это выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы типа Исполнители, Обозначения и прочее
 
-\Executors %% Список исполнителей здесь
-% %%% это рисует линию размера 3мм и толщиной 0.1 пункт
-\input{content/executors.tex}
+% \NirTitle{\input{content/annot.tex}}
 
-\input{content/referat.tex}
+% \Executors %% Список исполнителей здесь
+% % %%% это рисует линию размера 3мм и толщиной 0.1 пункт
+% \input{content/executors.tex}
 
-\setcounter{tocdepth}{2} %hide subsections
+% \input{content/referat.tex}
 
-\tableofcontents
+% \setcounter{tocdepth}{2} %hide subsections
 
-%\NormRefs % Нормативные ссылки
-%\Defines % Необходимые определения
+% \tableofcontents
 
-\Abbreviations %% Список обозначений и сокращений в тексте
+% %\NormRefs % Нормативные ссылки
+% %\Defines % Необходимые определения
 
-\input{content/introduction.tex}
+% \Abbreviations %% Список обозначений и сокращений в тексте
 
-\mainmatter %% это включает нумерацию глав и секций в документе ниже
+% \input{content/introduction.tex}
 
-\input{content/chapter.tex}
+% \mainmatter %% это включает нумерацию глав и секций в документе ниже
 
-\backmatter %% Здесь заканчивается нумерованная часть документа и начинаются заключение и ссылки
+% \input{content/chapter.tex}
 
-\input{content/conclusion.tex}% заключение к отчёту
-\input{content/biblio.tex}
-\input{content/applicationA.tex}
+% \backmatter %% Здесь заканчивается нумерованная часть документа и начинаются заключение и ссылки
+
+% \input{content/conclusion.tex}% заключение к отчёту
+% \input{content/biblio.tex}
+% \input{content/applicationA.tex}
 
 \end{document}
