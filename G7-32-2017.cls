@@ -2,6 +2,10 @@
 \ProvidesClass{G7-32-2017}[2023/01/26 Class for GOST Report]
 
 
+% Опция, если нужно скомпилировать в XeLaTeX или LuaLaTeX
+\newif\if@loadxelatex\@loadxelatexfalse
+\DeclareOption{xelatex}{\@loadxelatextrue}
+
 % Класс, используемый в качестве основы для отчета.
 \newcommand{\@baseClass}{report}
 % Передача необработанных опций базовому классу
@@ -13,13 +17,16 @@
 \LoadClass[a4paper,12pt]{\@baseClass}
 
 
-% \RequirePackage{cmap}
-% \RequirePackage[T2A, T1]{fontenc}
-% \RequirePackage[utf8]{inputenc}
-% \RequirePackage{tempora}
-
-\RequirePackage{fontspec}
-\setromanfont{Times New Roman}
+% Загружает нужные пакеты и шрифты в зависимости от наличии опции xelatex
+\if@loadxelatex 
+    \RequirePackage{fontspec} 
+    \setromanfont{Times New Roman} 
+\else 
+    \RequirePackage{cmap} 
+    \RequirePackage[T2A, T1]{fontenc} 
+    \RequirePackage[utf8]{inputenc} 
+    \RequirePackage{tempora} 
+\fi
 
 \RequirePackage[english,russian]{babel}
 \RequirePackage{G7-32-2017}
