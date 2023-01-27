@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{G7-32-2017}[2023/01/26 Style Package for GOST NIR Report]
+
+
+% Поля страниц
+\RequirePackage[left=30mm,right=15mm,top=20mm,bottom=20mm,headsep=0pt]{geometry}
+
+
+% Отступы первых строк абзаца
+\RequirePackage{indentfirst}
+\setlength\parindent{1.25cm}
+
+
+% Внешний вид заголовков
+\RequirePackage{titlesec}
+
+\newcommand{\frontmatter}{
+  \setcounter{secnumdepth}{-1}
+  \titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{0pt}{
+    \centering
+  }[]
+}
+\newcommand\mainmatter{
+  \setcounter{secnumdepth}{4}
+}
+\newcommand\backmatter{
+  % \setcounter{secnumdepth}{-1}
+  \titleformat{\chapter}[display]{\bfseries\Large}{\centering{\appendixname \ \thechapter}}{0pt}{
+    \centering
+  }[]
+}
