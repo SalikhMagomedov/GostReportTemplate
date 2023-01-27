@@ -31,7 +31,13 @@
   \setcounter{secnumdepth}{4}
   \titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{1em}{}[]
 }
-\newcommand\backmatter{
+\newcommand{\backmatter}{
+  \setcounter{secnumdepth}{-1}
+  \titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{0pt}{
+    \centering
+  }[]
+}
+\newcommand\appenmatter{
   \setcounter{secnumdepth}{1}
   \titleformat{\chapter}[display]{\bfseries\Large}{\centering{\appendixname~\thechapter}}{0pt}{
     \centering
