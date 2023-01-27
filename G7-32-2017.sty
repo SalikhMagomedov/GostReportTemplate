@@ -8,7 +8,9 @@
 
 % Отступы первых строк абзаца
 \RequirePackage{indentfirst}
+% Значение для абзацного отступа
 \newcommand{\@indentValue}{1.25cm}
+% Установка значения абзацного отступа
 \setlength\parindent{\@indentValue}
 % Интервал между строк
 \renewcommand{\baselinestretch}{1.5}
@@ -17,26 +19,32 @@
 % Внешний вид заголовков
 \RequirePackage{titlesec}
 
+% Настройка интервалов заголовков
 \titlespacing{\chapter}{\@indentValue}{*0}{*3}
 \titlespacing{\section}{\@indentValue}{*0}{*3}
 \titlespacing{\subsection}{\@indentValue}{*0}{*3}
 
+% Определение областей, где изменяется вид главы:
+% для структурных элементов до основного отчета
 \newcommand{\frontmatter}{
   \setcounter{secnumdepth}{-1}
   \titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{0pt}{
     \centering
   }[]
 }
+% для основного отчета
 \newcommand\mainmatter{
   \setcounter{secnumdepth}{4}
   \titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{1em}{}[]
 }
+% для структурных элементов после основного отчета
 \newcommand{\backmatter}{
   \setcounter{secnumdepth}{-1}
   \titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{0pt}{
     \centering
   }[]
 }
+% для приложений
 \newcommand\appenmatter{
   \setcounter{secnumdepth}{1}
   \titleformat{\chapter}[display]{\bfseries\Large}{\centering{\appendixname~\thechapter}}{0pt}{
