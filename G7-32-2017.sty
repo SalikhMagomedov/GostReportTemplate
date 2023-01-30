@@ -55,23 +55,6 @@
   }[]
 }
 
-
-% \newcommand{\@flatEnumItems}{
-%   \leftmargin=0pt
-%   \rightmargin=0pt
-%   \labelsep=0.5cm
-%   \labelwidth=-0.35cm
-%   \itemindent=1.75cm
-%   \listparindent=0pt
-%   \topsep=0pt plus 2pt minus 4pt
-%   \partopsep=0pt plus 1pt minus 1pt
-%   \parsep=0pt plus 1pt
-%   \itemsep=\parsep
-% }
-
-% \renewcommand{\@listI}{\@flatEnumItems}
-% \renewcommand{\@listii}{\@flatEnumItems}
-
 % Пакет для настройти enumerate и itemize
 \RequirePackage{enumitem}
 % Стили для нумерованного списка
@@ -98,3 +81,17 @@
   partopsep=0pt,
   itemsep=0pt,
 }
+
+
+% Оформление для текста рисунков
+\RequirePackage{caption, setspace}
+\DeclareCaptionLabelSeparator{triple}{ --- }
+\captionsetup[figure]{
+  labelsep=triple,
+  justification=centering
+}
+\addto\captionsrussian{\renewcommand{\figurename}{--- Рисунок}}
+
+
+% Интерактивные гиперсслыки
+\RequirePackage{hyperref}

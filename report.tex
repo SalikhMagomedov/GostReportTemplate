@@ -1,4 +1,4 @@
-\documentclass[draft,xelatex]{G7-32-2017}
+\documentclass[xelatex]{G7-32-2017}
 
 \usepackage{lipsum}
 
@@ -7,13 +7,13 @@
 % % \usepackage[utf8]{inputenc}
 % % \usepackage[english,russian]{babel}
 % \usepackage{float}
-% \usepackage{graphicx}
+\usepackage{graphicx}
 % % \usepackage{cmap}
 % \usepackage{color}
 
 
 % \usepackage[all,cmtip]{xy}
-% \graphicspath{{pictures/}}
+\graphicspath{ {./pictures/} }
 
 % % \usepackage{subcaption}
 % \usepackage{cite}
@@ -94,6 +94,14 @@
 \subsection{Subsection}
 
 \lipsum
+
+Ссылка на рисунок \ref{ex:fig:1}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{[NAME]/Plot}
+    \caption{\lipsum[6][4-5]}
+    \label{ex:fig:1}
+\end{figure}
 
 \lipsum[1][1]
 \begin{enumerate}
