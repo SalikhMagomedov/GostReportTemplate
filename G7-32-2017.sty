@@ -14,8 +14,11 @@
 \renewcommand{\baselinestretch}{1.5}
 
 
+% Опция для изменения внешнего вида статьи при большом количестве страниц
 \newif\if@isSmall\@isSmalltrue
 \DeclareOption{big}{\@isSmallfalse}
+
+
 \ProcessOptions\relax
 
 
@@ -33,6 +36,8 @@
 
 % Внешний вид заголовков
 \RequirePackage{titlesec}
+% Пакет с утилитами
+\RequirePackage{etoolbox}
 
 % Настройка интервалов заголовков
 \titlespacing{\chapter}{\parindent}{*0}{*3}
@@ -42,6 +47,20 @@
 % Настройка размера раздела и подраздела
 \titleformat{\section}{\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
+
+
+% Нумерация строчной кириллицей
+\newcommand{\alph@russian}[1]{\expandafter\@alph@russian\csname c@#1\endcsname}
+\newcommand{\@alph@russian}[1]{%
+  \ifcase#1\or а\or б\or в\or г\or д\or е\or ж\or и\or к\or л\or м\or н\or п\or р\or с\or т\or у\or ф\or х\or ц\or ч\or ш\or щ\or э\or ю\or я\else\@ctrerr\fi
+}
+
+% Нумерация прописной кириллицей
+\newcommand{\Alph@russian}[1]{\expandafter\@Alph@russian\csname c@#1\endcsname}
+\newcommand{\@Alph@russian}[1]{%
+  \ifcase#1\or А\or Б\or В\or Г\or Д\or Е\or Ж\or И\or К\or Л\or М\or Н\or П\or Р\or С\or Т\or У\or Ф\or Х\or Ц\or Ч\or Ш\or Щ\or Э\or Ю\or Я\else\@ctrerr\fi
+}
+
 
 % Определение областей, где изменяется вид главы:
 % для структурных элементов до основного отчета
@@ -65,17 +84,28 @@
   }[]
 }
 % для приложений
-\newcommand\appenmatter{
+% добавляется до
+\pretocmd{\appendix}{
   \setcounter{secnumdepth}{1}
   \titleformat{\chapter}[display]{\bfseries}{\centering{\appendixname~\thechapter}}{0pt}{
     \centering
   }[]
+  % учитывается номер приложения для небольшой статьи
   \if@isSmall
+    % для форматировалия номеров
+    % фигур
     \counterwithin{figure}{chapter}
+    % таблиц
     \counterwithin{table}{chapter}
+    % уравнений
     \counterwithin{equation}{chapter}
   \fi
-}
+}{}{}
+% добавляется после
+\apptocmd{\appendix}{
+  % замена счетчика приложений на кириллицу
+  \renewcommand{\thechapter}{\Alph@russian{chapter}}
+}{}{}
 
 % Пакет для настройти enumerate и itemize
 \RequirePackage{enumitem}
