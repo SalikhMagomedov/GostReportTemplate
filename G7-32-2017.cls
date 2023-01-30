@@ -6,6 +6,12 @@
 \newif\if@loadxelatex\@loadxelatexfalse
 \DeclareOption{xelatex}{\@loadxelatextrue}
 
+
+% Опция для настройки для отчета большого объема
+\newif\if@isBig\@isBigtrue
+\DeclareOption{big}{\@isBigfalse}
+
+
 % Класс, используемый в качестве основы для отчета.
 \newcommand{\@baseClass}{report}
 % Передача необработанных опций базовому классу
@@ -27,6 +33,17 @@
     \RequirePackage[utf8]{inputenc} 
     \RequirePackage{tempora} 
 \fi
+
+
+% Настройка нумераций
+\if@isBig
+    \RequirePackage{chngcntr}
+    % для рисунков
+    \counterwithout{figure}{chapter}
+    % для таблиц
+    \counterwithout{table}{chapter}
+\fi
+
 
 \RequirePackage[english,russian]{babel}
 \RequirePackage{G7-32-2017}
