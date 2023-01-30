@@ -7,15 +7,17 @@
 \DeclareOption{xelatex}{\@loadxelatextrue}
 
 
+% Команда в которой хранится название стилевого файла
+\newcommand{\@packageName}{G7-32-2017}
 % Опция для настройки для отчета большого объема
-\newif\if@isBig\@isBigtrue
-\DeclareOption{big}{\@isBigfalse}
+\DeclareOption{big}{\PassOptionsToPackage{big}{\@packageName}}
 
 
 % Класс, используемый в качестве основы для отчета.
 \newcommand{\@baseClass}{report}
 % Передача необработанных опций базовому классу
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{\@baseClass}}
+
 
 \ProcessOptions\relax
 
@@ -35,18 +37,9 @@
 \fi
 
 
-% Настройка нумераций
-\if@isBig
-    \RequirePackage{chngcntr}
-    % для рисунков
-    \counterwithout{figure}{chapter}
-    % для таблиц
-    \counterwithout{table}{chapter}
-\fi
-
-
 \RequirePackage[english,russian]{babel}
-\RequirePackage{G7-32-2017}
+\RequirePackage{amsmath}
+\RequirePackage{\@packageName}
 
 
 % Именование структурных элементов

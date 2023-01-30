@@ -14,6 +14,23 @@
 \renewcommand{\baselinestretch}{1.5}
 
 
+\newif\if@isSmall\@isSmalltrue
+\DeclareOption{big}{\@isSmallfalse}
+\ProcessOptions\relax
+
+
+% Настройка нумераций
+\if@isSmall
+    \RequirePackage{chngcntr}
+    % для рисунков
+    \counterwithout{figure}{chapter}
+    % для таблиц
+    \counterwithout{table}{chapter}
+    % для формул
+    \counterwithout{equation}{chapter}
+\fi
+
+
 % Внешний вид заголовков
 \RequirePackage{titlesec}
 
@@ -53,6 +70,11 @@
   \titleformat{\chapter}[display]{\bfseries}{\centering{\appendixname~\thechapter}}{0pt}{
     \centering
   }[]
+  \if@isSmall
+    \counterwithin{figure}{chapter}
+    \counterwithin{table}{chapter}
+    \counterwithin{equation}{chapter}
+  \fi
 }
 
 % Пакет для настройти enumerate и itemize
