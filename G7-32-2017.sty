@@ -100,6 +100,11 @@
     % уравнений
     \counterwithin{equation}{chapter}
   \fi
+  % Добавление текста <<ПРИЛОЖЕНИЕ>> перед номером
+  \titlecontents{chapter}[0pt]{}
+    {\appendixname~\thecontentslabel.\quad}
+    {}
+    {\titlerule*[1pc]{.}\contentspage}
 }{}{}
 % добавляется после
 \apptocmd{\appendix}{
@@ -156,4 +161,7 @@
 \setcounter{tocdepth}{0}
 % Добавление точек для структурных элементов и разделов
 \RequirePackage{titletoc}
-\dottedcontents{chapter}[0pt]{}{1.5em}{1pc}
+\titlecontents{chapter}[0pt]{}
+  {\thecontentslabel\quad}
+  {}
+  {\titlerule*[1pc]{.}\contentspage}
