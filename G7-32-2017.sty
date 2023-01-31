@@ -154,5 +154,6 @@
 
 % Установка значения глубины вложенности содержания
 \setcounter{tocdepth}{0}
-\RequirePackage{tocloft}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+% Добавление точек для структурных элементов и разделов
+\RequirePackage{titletoc}
+\dottedcontents{chapter}[0pt]{}{1.5em}{1pc}
