@@ -2,28 +2,29 @@
 \ProvidesClass{G7-32-2017}[2023/01/26 Class for GOST Report]
 
 
+
+
+% OPTIONS
+
 % Опция, если нужно скомпилировать в XeLaTeX или LuaLaTeX
 \newif\if@loadxelatex\@loadxelatexfalse
 \DeclareOption{xelatex}{\@loadxelatextrue}
-
-
 % Команда в которой хранится название стилевого файла
 \newcommand{\@packageName}{G7-32-2017}
 % Опция для настройки для отчета большого объема
 \DeclareOption{big}{\PassOptionsToPackage{big}{\@packageName}}
-
-
 % Класс, используемый в качестве основы для отчета.
 \newcommand{\@baseClass}{report}
 % Передача необработанных опций базовому классу
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{\@baseClass}}
 
-
 \ProcessOptions\relax
-
-
 \LoadClass[a4paper,12pt]{\@baseClass}
 
+
+
+
+% PACKAGES
 
 % Загружает нужные пакеты и шрифты в зависимости от наличии опции xelatex
 \if@loadxelatex 
@@ -35,13 +36,19 @@
     \RequirePackage[utf8]{inputenc} 
     \RequirePackage{tempora} 
 \fi
-
-
 \RequirePackage[english,russian]{babel}
 \RequirePackage{amsmath}
 \RequirePackage{array}
+% Объявление комманд для отделения структурных элементов от разделов отчета
+\newcommand{\frontmatter}{}
+\newcommand\mainmatter{}
+\newcommand{\backmatter}{}
 \RequirePackage{\@packageName}
 
+
+
+
+% COMMANDS
 
 % Именование структурных элементов
 % Список исполнителей
@@ -58,6 +65,13 @@
 \newcommand\Introduction{\chapter{ВВЕДЕНИЕ}}
 % Заключение
 \newcommand\Conclusion{\chapter{ЗАКЛЮЧЕНИЕ}}
+
+
+
+
+% SETTINGS
+
+% Именование структурных элементов
 % Список использованных источников
 \addto\captionsrussian{\renewcommand{\bibname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}}
 % Приложение

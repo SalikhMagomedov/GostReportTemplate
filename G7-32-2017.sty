@@ -2,53 +2,48 @@
 \ProvidesPackage{G7-32-2017}[2023/01/26 Style Package for GOST NIR Report]
 
 
-% Поля страниц
-\RequirePackage[left=30mm,right=15mm,top=20mm,bottom=20mm,headsep=0pt]{geometry}
 
 
-% Отступы первых строк абзаца
-\RequirePackage{indentfirst}
-% Установка значения абзацного отступа
-\setlength\parindent{1.25cm}
-% Интервал между строк
-% \renewcommand{\baselinestretch}{1.5}
-\linespread{1.5}
+% OPTIONS
 
-
-% Опция для изменения внешнего вида статьи при большом количестве страниц
+% Условие для опции размера документа
 \newif\if@isSmall\@isSmalltrue
+% Опция для изменения внешнего вида статьи при большом количестве страниц
 \DeclareOption{big}{\@isSmallfalse}
-
-
 \ProcessOptions\relax
 
 
-% Настройка нумераций
-\if@isSmall
-    \RequirePackage{chngcntr}
-    % для рисунков
-    \counterwithout{figure}{chapter}
-    % для таблиц
-    \counterwithout{table}{chapter}
-    % для формул
-    \counterwithout{equation}{chapter}
-\fi
 
 
+% PACKAGES
+
+% Поля страниц
+\RequirePackage[left=30mm,right=15mm,top=20mm,bottom=20mm,headsep=0pt]{geometry}
+% Отступы первых строк абзаца
+\RequirePackage{indentfirst}
 % Внешний вид заголовков
 \RequirePackage{titlesec}
 % Пакет с утилитами
 \RequirePackage{etoolbox}
+% Пакет для изменения отображения лейблов
+\if@isSmall
+  \RequirePackage{chngcntr}
+\fi
+% Пакет для настройти enumerate и itemize
+\RequirePackage{enumitem}
+% Пакет для настройки интервалов текста
+\RequirePackage{setspace}
+% Настройка подписей для рисунков, таблиц и т.д.
+\RequirePackage{caption}
+% Интерактивные гиперсслыки
+\RequirePackage{hyperref}
+% Пакет для настройки внешнего вида содержания
+\RequirePackage{titletoc}
 
-% Настройка интервалов заголовков
-\titlespacing{\chapter}{\parindent}{*0}{*3}
-\titlespacing{\section}{\parindent}{*0}{*3}
-\titlespacing{\subsection}{\parindent}{*0}{*3}
 
-% Настройка размера раздела и подраздела
-\titleformat{\section}{\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
 
+
+% COMMANDS
 
 % Нумерация строчной кириллицей
 \newcommand{\alph@russian}[1]{\expandafter\@alph@russian\csname c@#1\endcsname}
@@ -65,7 +60,7 @@
 
 % Определение областей, где изменяется вид главы:
 % для структурных элементов до основного отчета
-\newcommand{\frontmatter}{
+\renewcommand{\frontmatter}{
   \setcounter{page}{2}
   \setcounter{secnumdepth}{-1}
   \titleformat{\chapter}[hang]{\bfseries}{\thechapter}{0pt}{
@@ -73,18 +68,51 @@
   }[]
 }
 % для основного отчета
-\newcommand\mainmatter{
+\renewcommand{\mainmatter}{
   \setcounter{secnumdepth}{4}
   \titleformat{\chapter}[hang]{\bfseries}{\thechapter}{1em}{}[]
 }
 % для структурных элементов после основного отчета
-\newcommand{\backmatter}{
+\renewcommand{\backmatter}{
   \setcounter{secnumdepth}{-1}
   \titleformat{\chapter}[hang]{\bfseries}{\thechapter}{0pt}{
     \centering
   }[]
 }
-% для приложений
+
+
+
+
+% SETTINGS
+
+% Установка значения абзацного отступа
+\setlength\parindent{1.25cm}
+% Интервал между строк
+\linespread{1.5}
+
+
+% Настройка нумераций для небольшого отчета
+\if@isSmall
+  % для рисунков
+  \counterwithout{figure}{chapter}
+  % для таблиц
+  \counterwithout{table}{chapter}
+  % для формул
+  \counterwithout{equation}{chapter}
+\fi
+
+
+% Настройка интервалов заголовков
+\titlespacing{\chapter}{\parindent}{*0}{*3}
+\titlespacing{\section}{\parindent}{*0}{*3}
+\titlespacing{\subsection}{\parindent}{*0}{*3}
+
+% Настройка размера раздела и подраздела
+\titleformat{\section}{\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
+
+
+% Определение областей, где изменяется вид главы для приложений
 % добавляется до
 \pretocmd{\appendix}{
   \setcounter{secnumdepth}{1}
@@ -113,8 +141,7 @@
   \renewcommand{\thechapter}{\Alph@russian{chapter}}
 }{}{}
 
-% Пакет для настройти enumerate и itemize
-\RequirePackage{enumitem}
+
 % Стили для нумерованного списка
 \setlist[enumerate]{
   label=\arabic*),
@@ -142,7 +169,6 @@
 
 
 % Оформление для текста рисунков
-\RequirePackage{caption, setspace}
 \DeclareCaptionLabelSeparator{triple}{ --- }
 \captionsetup[figure]{
   labelsep=triple,
@@ -154,14 +180,9 @@
 \addto\captionsrussian{\renewcommand{\figurename}{--- Рисунок}}
 
 
-% Интерактивные гиперсслыки
-\RequirePackage{hyperref}
-
-
 % Установка значения глубины вложенности содержания
 \setcounter{tocdepth}{0}
 % Добавление точек для структурных элементов и разделов
-\RequirePackage{titletoc}
 \titlecontents{chapter}[0pt]{}
   {\thecontentslabel\quad}
   {}
