@@ -6,8 +6,9 @@
 
 % OPTIONS
 
+
 % Условие для опции размера документа
-\newif\if@isSmall\@isSmalltrue
+\newif{\if@isSmall}{\@isSmalltrue}
 % Опция для изменения внешнего вида статьи при большом количестве страниц
 \DeclareOption{big}{\@isSmallfalse}
 \ProcessOptions\relax
@@ -16,6 +17,7 @@
 
 
 % PACKAGES
+
 
 % Поля страниц
 \RequirePackage[left=30mm,right=15mm,top=20mm,bottom=20mm,headsep=0pt]{geometry}
@@ -44,6 +46,7 @@
 
 
 % COMMANDS
+
 
 % Нумерация строчной кириллицей
 \newcommand{\alph@russian}[1]{\expandafter\@alph@russian\csname c@#1\endcsname}
@@ -84,6 +87,7 @@
 
 
 % SETTINGS
+
 
 % Установка значения абзацного отступа
 \setlength\parindent{1.25cm}
