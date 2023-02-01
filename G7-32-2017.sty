@@ -11,7 +11,8 @@
 % Установка значения абзацного отступа
 \setlength\parindent{1.25cm}
 % Интервал между строк
-\renewcommand{\baselinestretch}{1.5}
+% \renewcommand{\baselinestretch}{1.5}
+\linespread{1.5}
 
 
 % Опция для изменения внешнего вида статьи при большом количестве страниц
@@ -165,3 +166,14 @@
   {\thecontentslabel\quad}
   {}
   {\titlerule*[1pc]{.}\contentspage}
+
+
+% Стили для титульной страницыЯ
+\AtBeginEnvironment{titlepage}{
+  \setlength{\tabcolsep}{0pt}
+  \begin{singlespacing}
+}
+\AtEndEnvironment{titlepage}{
+  \end{singlespacing}
+  \setlength{\tabcolsep}{6pt}
+}

@@ -51,59 +51,82 @@
 \begin{document}
 
 \begin{titlepage}
-    [Наименование министерства (ведомства) или другого структурного образования, в систему которого входит организация-исполнитель]
 
-    [Наименование (полное и сокращенное) организации --- исполнителя НИР]
+    \centering{
+    
+    Наименование министерства (ведомства)
 
-    [Индекс Универсальной десятичной классификации (УДК) по ГОСТ 7.90]
+    \MakeUppercase{полное Наименование организации --- исполнителя НИР}
+    
+    (\MakeUppercase{сокращенное Наименование организации --- исполнителя НИР})
 
-    [Номера, идентифицирующие отчет]
-    \begin{enumerate}
-        \item \empty [регистрационный номер НИР (присваивает национальный орган научно-техни\-ческой информации каждой страны при открытии темы НИР)]
-        \item \empty [регистрационные номера отчета (присваивает национальный орган научно-тех\-нической информации каждой страны при предоставлении отчетной документации)]
-    \end{enumerate}
-    
-    [Грифы согласования и утверждения отчета, включая подпись руководителя организации с расшифровкой, печать организации и даты согласования и утверждения отчета (дату указывают в интервале выполнения работы --- для промежуточных отчетов и дату окончания --- для заключительных отчетов)]
+    }
 
-    [Вид документа (отчет о НИР)]
-    
-    [Наименование НИР]
-    
-    [Наименование отчета]
-    
-    [Вид отчета (заключительный, промежуточный)]
-    
-    [Номер (шифр) научно-технической программы, темы]
-    
-    [Номер книги отчета (при наличии нескольких книг отчета)]
-    
-    [Должность, ученую степень, ученое звание, подпись, инициалы и фамилию научного руководителя/руководителей НИР]
-    
-    [Место и год составления отчета]
-    % \begin{center}
-    %     \vspace*{1cm}
+    \vspace{2em}
 
-    %     \textbf{Thesis Title}
+    \raggedright{
 
-    %     \vspace{0.5cm}
-    %         Thesis Subtitle
-                
-    %     \vspace{1.5cm}
+    Индекс УДК
+    
+    Рег. № НИОКТР
+    
+    Рег. № ИКРБС
+    
+    }
 
-    %     \textbf{Author Name}
+    \vspace{2em}
+    
+    \setlength{\tabcolsep}{0pt}
+    \begin{tabular}{p{0.45\textwidth} p{0.1\textwidth} p{0.45\textwidth}}
+        СОГЛАСОВАНО & & УТВЕРЖДАЮ
+        \\
+        Должность, сокращ. наимен. орг. & & Должность, сокращ. наимен. орг. 
+        % \\
+        % \centering{\rule[-2mm]{3cm}{0.2mm}} \newline \centering{\footnotesize{подпись}} & \centering{\rule[-2mm]{19ex}{0.2mm}} \newline \centering\footnotesize{расшифровка подписи} & \centering{\rule[-2mm]{3cm}{0.2mm}} \newline \centering\footnotesize{подпись} & \centering{\rule[-2mm]{19ex}{0.2mm}} \newline \centering\footnotesize{расшифровка подписи}
+    \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.03\textwidth} p{0.22\textwidth} p{0.1\textwidth} p{0.2\textwidth} p{0.03\textwidth} p{0.22\textwidth}}
+        \rule[-2mm]{0.2\textwidth}{0.2mm} \newline \centering{\footnotesize{подпись}} & & \rule[-2mm]{0.22\textwidth}{0.2mm} \newline \centering{\footnotesize{расшифровка подписи}} & & \rule[-2mm]{0.2\textwidth}{0.2mm} \newline \centering{\footnotesize{подпись}} & & \rule[-2mm]{0.22\textwidth}{0.2mm} \newline \centering{\footnotesize{расшифровка подписи}}
+    \end{tabular}
+    \begin{tabular}{p{0.4\textwidth} p{0.2\textwidth} p{0.4\textwidth}}
+        \rule[-2mm]{0.4\textwidth}{0.2mm} \newline \centering{\footnotesize{дата}}
+        & &
+        \rule[-2mm]{0.4\textwidth}{0.2mm} \newline \centering{\footnotesize{дата}}
+    \end{tabular}
+    
+    \vspace{2em}
 
-    %     \vfill
-                
-    %     A thesis presented for the degree of\\
-    %     Doctor of Philosophy
-                
-    %     \vspace{0.8cm}
-                
-    %     Department Name\\
-    %     University Name\\
-    %     Country\\
-    %     Date
-    % \end{center}
+    \centering{ \MakeUppercase{ отчет \\ о научно-исследовательской работе } }
+
+    \vspace{2em}
+    
+    Наименование НИР \\ по теме:
+    
+    \MakeUppercase{Наименование отчета}
+    
+    (вид отчета, № этапа )
+
+    \vspace{2em}
+    
+    Наименование федеральной программы
+
+    Номер книги
+
+    \vfill
+    
+    \begin{tabular}{
+        b{0.2\textwidth} 
+        b{0.25\textwidth} 
+        b{0.1\textwidth} 
+        b{0.2\textwidth}
+        b{0.25\textwidth}
+    }
+        \empty & Руководитель НИР, \newline должность \newline \empty & & \rule[-1mm]{0.2\textwidth}{0.2mm} \newline \centering\footnotesize{подпись, дата} & ~Ф.И.О. \newline \footnotesize{\empty}
+    \end{tabular}
+
+    \vfill
+    
+    Место~Год
+    
 \end{titlepage}
 
 \frontmatter

@@ -39,6 +39,7 @@
 
 \RequirePackage[english,russian]{babel}
 \RequirePackage{amsmath}
+\RequirePackage{array}
 \RequirePackage{\@packageName}
 
 
