@@ -184,14 +184,30 @@
 % Список исполнителей
 % Команда для построения строки исполнителя в списке исполнителей
 \newcommand{\row}[3][]{%
-    \small{#2}
-    \newline &
+\small{#2}
+\newline &
     \centering{\rule[-2mm]{0.29\textwidth}{0.2mm}}
     \centering{\footnotesize{подпись, дата}} &
     #3
     \newline
     \footnotesize{\notblank{#1}{(#1)}{}} 
     \\ & & \\
+}
+% Окружение списка исполнителей
+\newenvironment{executors}[1][]{
+    \Executors
+    \setlength{\tabcolsep}{0pt}
+    \begin{longtable}{
+        b{0.35\textwidth} 
+        b{0.3\textwidth} 
+        b{0.35\textwidth}
+    }
+        
+        Руководитель НИР, & & \\
+        \row[#1]{\HeadOfResearch@Position@Value}{\HeadOfResearch@FullName@Value}
+}{
+    \end{longtable}
+    \setlength{\tabcolsep}{6pt}
 }
 
 
