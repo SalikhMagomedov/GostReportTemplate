@@ -110,18 +110,18 @@
 }
 % Согласовано
 % условие отвечает за отображение блока
-\newif{\if@agreed}{\@agreedfalse}
+\newbool{isAgreed}
 % условие переключает письменный и печатный вид расшифровки подписи
-\newif{\if@agreedFullName}{\@agreedFullNamefalse}
+\newbool{isAgreedFullName}
 % Должность, сокращ. наимен. орг.
 \newcommand{\AgreedInformation@Value}{}
 % Расшифровка подписи
 \newcommand{\AgreedFullName@Value}{}
 \newcommand{\AgreedInformation}[2][]{
-    \@agreedtrue
+    \booltrue{isAgreed}
 
     \notblank{#1}{
-        \@agreedFullNametrue
+        \booltrue{isAgreedFullName}
         \renewcommand{\AgreedFullName@Value}{#1}
     }{}
 
@@ -129,14 +129,14 @@
 }
 % Утверждаю
 % условие переключает письменный и печатный вид расшифровки подписи
-\newif{\if@approvedFullName}{\@approvedFullNamefalse}
+\newbool{isApprovedFullName}
 % Должность, сокращ. наимен. орг.
 \newcommand{\ApprovedInformation@Value}{}
 % Расшифровка подписи
 \newcommand{\ApprovedFullName@Value}{}
 \newcommand{\ApprovedInformation}[2][]{
     \notblank{#1}{
-        \@approvedFullNametrue
+        \booltrue{isApprovedFullName}
         \renewcommand{\ApprovedFullName@Value}{#1}
     }{}
     
@@ -257,11 +257,11 @@
             p{0.1\textwidth}
             p{0.45\textwidth}
         }
-            \if@agreed СОГЛАСОВАНО \fi
+            \ifbool{isAgreed}{СОГЛАСОВАНО}{}
             & &
             УТВЕРЖДАЮ
             \\
-            \if@agreed \AgreedInformation@Value \fi
+            \ifbool{isAgreed}{\AgreedInformation@Value}{}
             & &
             \ApprovedInformation@Value
         \end{tabular}
@@ -274,44 +274,44 @@
             p{0.03\textwidth}
             p{0.22\textwidth}
         }
-            \if@agreed
+            \ifbool{isAgreed}{
                 \rule[-2mm]{0.2\textwidth}{0.2mm}
                 \newline
                 \centering{\footnotesize{подпись}}
-            \fi
+            }{}
             & &
-            \if@agreed
-                \if@agreedFullName
+            \ifbool{isAgreed}{
+                \ifbool{isAgreedFullName}{
                     \AgreedFullName@Value
-                \else
+                }{
                     \rule[-2mm]{0.22\textwidth}{0.2mm}
                     \newline
                     \centering{\footnotesize{расшифровка подписи}}
-                \fi
-            \fi
+                }
+            }{}
             & &
             \rule[-2mm]{0.2\textwidth}{0.2mm}
             \newline
             \centering{\footnotesize{подпись}}
             & &
-            \if@approvedFullName
+            \ifbool{isApprovedFullName}{
                 \ApprovedFullName@Value
-            \else
+            }{
                 \rule[-2mm]{0.22\textwidth}{0.2mm}
                 \newline
                 \centering{\footnotesize{расшифровка подписи}}
-            \fi
+            }
         \end{tabular}
         \begin{tabular}{
             p{0.4\textwidth}
             p{0.2\textwidth}
             p{0.4\textwidth}
         }
-            \if@agreed
+            \ifbool{isAgreed}{
                 \rule[-2mm]{0.4\textwidth}{0.2mm}
                 \newline
                 \centering{\footnotesize{дата}}
-            \fi
+            }{}
             & &
             \rule[-2mm]{0.4\textwidth}{0.2mm}
             \newline
