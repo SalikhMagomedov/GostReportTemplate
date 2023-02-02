@@ -1,5 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{G7-32-2017}[2023/01/26 Class for GOST Report]
+\newcommand{\@className}{G7-32-2017}
+\ProvidesClass{\@className}[2023/01/26 Class for GOST Report]
 
 
 
@@ -216,6 +217,16 @@
 
 
 % SETTINGS
+
+
+% Вызов ошибки при использовании \eqno{eqn num}
+\renewcommand{\eqno}[1]{
+    \ClassError{\@className}{%
+        Command \protect\eqno{eqn num} is forbidden, use \protect\begin{equation}\label{...}\space.\space.\space.\space\protect\end{equation} instead%
+    }{%
+        Command \protect\eqno{eqn num} is forbidden, because if it isn't can be multiple equations with same number in report and this report require using \protect\eqref{label} instead a number
+    }
+}
 
 
 % Именование структурных элементов
