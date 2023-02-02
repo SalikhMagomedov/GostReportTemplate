@@ -122,6 +122,10 @@
 % Определение областей, где изменяется вид главы для приложений
 % добавляется до
 \pretocmd{\appendix}{
+    % Добавление счетчика для подсчета количества приложений
+    % \ClearAssociatedCounters{}
+    \AddAssociatedCounters{chapter}{appendixchapters}
+    
     \setcounter{secnumdepth}{1}
     \titleformat{\chapter}[display]{\bfseries}{\centering{\appendixname~\thechapter}}{0pt}{
         \centering

@@ -46,6 +46,8 @@
 \RequirePackage{amsmath}
 \RequirePackage{array}
 \RequirePackage{longtable}
+\RequirePackage{totcount}
+\RequirePackage{xassoccnt}
 % Объявление комманд для отделения структурных элементов от разделов отчета
 \newcommand{\frontmatter}{}
 \newcommand\mainmatter{}
@@ -214,6 +216,56 @@
 }
 
 
+% Реферат
+% Количество книг
+\newcommand{\TotalBooks@Value}{-1}
+\newcommand{\TotalBooks}[1]{
+    \renewcommand{\TotalBooks@Value}{#1}
+}
+% Количество рисунков
+\newcommand{\TotalFigures@Value}{\TotalValue{totalfigures}}
+\newcommand{\TotalFigures}[1]{
+    \renewcommand{\TotalFigures@Value}{#1}
+}
+% Количество таблиц
+\newcommand{\TotalTables@Value}{\TotalValue{totaltables}}
+\newcommand{\TotalTables}[1]{
+    \renewcommand{\TotalTables@Value}{#1}
+}
+% Количество использованных источников
+\newcommand{\TotalBibItems@Value}{-1}
+\newcommand{\TotalBibItems}[1]{
+    \renewcommand{\TotalBibItems@Value}{#1}
+}
+% Количество приложений
+\newcommand{\TotalAppendixes@Value}{\TotalValue{appendixchapters}}
+\newcommand{\TotalAppendixes}[1]{
+    \renewcommand{\TotalAppendixes@Value}{#1}
+}
+% Ключевые слова
+\newcommand{\KeyWords@Value}{}
+\newcommand{\KeyWords}[1]{
+    \renewcommand{\KeyWords@Value}{#1}
+}
+% Окружение реферата
+\apptocmd{\KeyWords}{
+    \Referat %Реферат отчёта, не более 1 страницы
+    % Добавление счетчика к табличам
+    \AddAssociatedCounters{table}{totaltables}
+
+    Отчет 
+    \total{page}~c.%
+    \ifnumcomp{\TotalBooks@Value}{>}{0}{, \TotalBooks@Value~кн.}{}%
+    \ifnumcomp{\TotalFigures@Value}{>}{0}{, \TotalFigures@Value~рис.}{}%
+    \ifnumcomp{\TotalTables@Value}{>}{0}{, \TotalTables@Value~табл.}{}%
+    \ifnumcomp{\TotalBibItems@Value}{>}{0}{, \TotalBibItems@Value~источн.}{}%
+    \ifnumcomp{\TotalAppendixes@Value}{>}{0}{, \TotalAppendixes@Value~прил.}{}%
+
+    % Ключевые слова
+    \MakeUppercase{\KeyWords@Value}
+}{}{}
+
+
 
 
 % SETTINGS
@@ -379,3 +431,18 @@
         
     \end{titlepage}
 }
+
+
+% Настройки реферата
+% Добавление счетчиков
+\regtotcounter{page}
+% Счетчик для подсчета общего количества рисунков
+\NewTotalDocumentCounter{totalfigures}
+% Счетчик для подсчета общего количества таблиц
+\NewTotalDocumentCounter{totaltables}
+% Счетчик для подсчета количества приложений
+\NewTotalDocumentCounter{appendixchapters}
+% Связывание счетчиков
+\DeclareAssociatedCounters{figure}{totalfigures}
+\DeclareAssociatedCounters{table}{}
+\DeclareAssociatedCounters{chapter}{}
