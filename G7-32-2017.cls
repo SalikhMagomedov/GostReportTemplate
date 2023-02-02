@@ -7,13 +7,16 @@
 % OPTIONS
 
 
+\RequirePackage{etoolbox}
 % Опция, если нужно скомпилировать в XeLaTeX или LuaLaTeX
-\newif{\if@loadxelatex}{\@loadxelatexfalse}
-\DeclareOption{xelatex}{\@loadxelatextrue}
+\newbool{isXelatex}
+\DeclareOption{xelatex}{\booltrue{isXelatex}}
 % Команда в которой хранится название стилевого файла
 \newcommand{\@packageName}{G7-32-2017}
 % Опция для настройки для отчета большого объема
 \DeclareOption{big}{\PassOptionsToPackage{big}{\@packageName}}
+% Опция для нумерации внутри 
+\DeclareOption{chapter-numbering}{\PassOptionsToPackage{chapter-numbering}{\@packageName}}
 % Класс, используемый в качестве основы для отчета.
 \newcommand{\@baseClass}{report}
 % Передача необработанных опций базовому классу
@@ -29,19 +32,18 @@
 
 
 % Загружает нужные пакеты и шрифты в зависимости от наличии опции xelatex
-\if@loadxelatex 
+\ifbool{isXelatex}{
     \RequirePackage{fontspec} 
     \setromanfont{Times New Roman} 
-\else 
+}{
     \RequirePackage{cmap} 
     \RequirePackage[T2A, T1]{fontenc} 
     \RequirePackage[utf8]{inputenc} 
     \RequirePackage{tempora} 
-\fi
+}
 \RequirePackage[english,russian]{babel}
 \RequirePackage{amsmath}
 \RequirePackage{array}
-\RequirePackage{etoolbox}
 \RequirePackage{longtable}
 % Объявление комманд для отделения структурных элементов от разделов отчета
 \newcommand{\frontmatter}{}

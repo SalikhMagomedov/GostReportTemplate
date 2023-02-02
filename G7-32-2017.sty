@@ -7,10 +7,15 @@
 % OPTIONS
 
 
+% Пакет с утилитами
+\RequirePackage{etoolbox}
 % Условие для опции размера документа
-\newif{\if@isSmall}{\@isSmalltrue}
+\newbool{isBig}
+% Условие опции для нумерации внутри глав
+\newbool{isChapterNumbering}
 % Опция для изменения внешнего вида статьи при большом количестве страниц
-\DeclareOption{big}{\@isSmallfalse}
+\DeclareOption{big}{\booltrue{isBig}}
+\DeclareOption{chapter-numbering}{\booltrue{isChapterNumbering}}
 \ProcessOptions\relax
 
 
@@ -25,12 +30,10 @@
 \RequirePackage{indentfirst}
 % Внешний вид заголовков
 \RequirePackage{titlesec}
-% Пакет с утилитами
-\RequirePackage{etoolbox}
 % Пакет для изменения отображения лейблов
-\if@isSmall
+\notbool{isChapterNumbering}{
     \RequirePackage{chngcntr}
-\fi
+}{}
 % Пакет для настройти enumerate и itemize
 \RequirePackage{enumitem}
 % Пакет для настройки интервалов текста
@@ -92,18 +95,18 @@
 % Установка значения абзацного отступа
 \setlength\parindent{1.25cm}
 % Интервал между строк
-\linespread{1.5}
+\ifbool{isBig}{\linespread{1}}{\linespread{1.5}}
 
 
 % Настройка нумераций для небольшого отчета
-\if@isSmall
+\notbool{isChapterNumbering}{
     % для рисунков
     \counterwithout{figure}{chapter}
     % для таблиц
     \counterwithout{table}{chapter}
     % для формул
     \counterwithout{equation}{chapter}
-\fi
+}{}
 
 
 % Настройка интервалов заголовков
@@ -124,7 +127,7 @@
         \centering
     }[]
     % учитывается номер приложения для небольшой статьи
-    \if@isSmall
+    \notbool{isChapterNumbering}{
         % для форматировалия номеров
         % фигур
         \counterwithin{figure}{chapter}
@@ -132,7 +135,7 @@
         \counterwithin{table}{chapter}
         % уравнений
         \counterwithin{equation}{chapter}
-    \fi
+    }{}
     % Добавление текста <<ПРИЛОЖЕНИЕ>> перед номером
     \titlecontents{chapter}[0pt]{}
         {\appendixname~\thecontentslabel.\quad}
