@@ -192,12 +192,34 @@
 
 
 % Установка значения глубины вложенности содержания
-\setcounter{tocdepth}{0}
+\setcounter{tocdepth}{2}
+
 % Добавление точек для структурных элементов и разделов
-\titlecontents{chapter}[0pt]{}
-    {\thecontentslabel\quad}
-    {}
-    {\titlerule*[1pc]{.}\contentspage}
+\titlecontents{chapter}
+[0pt] % left
+{} % above code
+{\contentspush{\thecontentslabel\quad}} % numbered entry format
+{} % numberless entry format
+{\titlerule*[1pc]{.}\contentspage} % filter page format
+[] %below code
+
+% Добавление точек для подразделов
+\titlecontents{section}
+[2ex] % left
+{} % above code
+{\contentspush{\thecontentslabel\quad}} % numbered entry format
+{} % numberless entry format
+{\titlerule*[1pc]{.}\contentspage} % filter page format
+[] %below code
+
+% Добавление точек для пунктов
+\titlecontents{subsection}
+[4ex] % left
+{} % above code
+{\contentspush{\thecontentslabel\quad}} % numbered entry format
+{} % numberless entry format
+{\titlerule*[1pc]{.}\contentspage} % filter page format
+[] %below code
 
 
 % Стили для титульной страницыЯ
