@@ -50,7 +50,7 @@
 \RequirePackage{xassoccnt}
 % Объявление комманд для отделения структурных элементов от разделов отчета
 \newcommand{\frontmatter}{}
-\newcommand\mainmatter{}
+\newcommand{\mainmatter}{}
 \newcommand{\backmatter}{}
 \RequirePackage{\@packageName}
 
@@ -200,6 +200,7 @@
 }
 % Окружение списка исполнителей
 \newenvironment{executors}[1][]{
+    \begin{singlespacing}
     \Executors
     \setlength{\tabcolsep}{0pt}
     \begin{longtable}{
@@ -213,6 +214,7 @@
 }{
     \end{longtable}
     \setlength{\tabcolsep}{6pt}
+    \end{singlespacing}
 }
 
 
