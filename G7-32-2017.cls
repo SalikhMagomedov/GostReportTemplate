@@ -266,8 +266,13 @@
     \input{#1}
 \end{itemize}
 }
+
 % Введение
-\newcommand\Introduction{\chapter{ВВЕДЕНИЕ}}
+\newcommand{\Introduction}[1]{
+\chapter{ВВЕДЕНИЕ}
+
+\input{#1}
+}
 % Заключение
 \newcommand\Conclusion{\chapter{ЗАКЛЮЧЕНИЕ}}
 
