@@ -66,147 +66,147 @@
 
 % Титульный лист
 \newcommand{\TitlePage}[1]{
-\input{#1}
-\begin{titlepage}
-    
-    \centering{
-    
-        \MinistryName@Value
+    \input{#1}
+    \begin{titlepage}
         
-        \OrganizationName@Value
+        \centering{
+        
+            \MinistryName@Value
+            
+            \OrganizationName@Value
 
-    }
-    
-    \vspace{2em}
-    
-    \raggedright{
-    
-        УДК~\UdkIndex@Value
+        }
         
-        Рег.~№~НИОКТР~\NioktrRegistrationNumber@Value
+        \vspace{2em}
         
-        Рег.~№~ИКРБС\notblank{\IkrbsRegistrationNumber@Value}{~\IkrbsRegistrationNumber@Value}{}
-    
-    }
-    
-    \vspace{2em}
-    
-    \setlength{\tabcolsep}{0pt}
-    \begin{tabular}{
-        p{0.45\textwidth}
-        p{0.1\textwidth}
-        p{0.45\textwidth}
-    }
-        \ifbool{isAgreed}{СОГЛАСОВАНО}{}
-        & &
-        УТВЕРЖДАЮ
-        \\
-        \ifbool{isAgreed}{\AgreedInformation@Value}{}
-        & &
-        \ApprovedInformation@Value
-    \end{tabular}
-    \begin{tabular}{
-        p{0.2\textwidth}
-        p{0.03\textwidth}
-        p{0.22\textwidth}
-        p{0.1\textwidth}
-        p{0.2\textwidth}
-        p{0.03\textwidth}
-        p{0.22\textwidth}
-    }
-        \ifbool{isAgreed}{
+        \raggedright{
+        
+            УДК~\UdkIndex@Value
+            
+            Рег.~№~НИОКТР~\NioktrRegistrationNumber@Value
+            
+            Рег.~№~ИКРБС\notblank{\IkrbsRegistrationNumber@Value}{~\IkrbsRegistrationNumber@Value}{}
+        
+        }
+        
+        \vspace{2em}
+        
+        \setlength{\tabcolsep}{0pt}
+        \begin{tabular}{
+            p{0.45\textwidth}
+            p{0.1\textwidth}
+            p{0.45\textwidth}
+        }
+            \ifbool{isAgreed}{СОГЛАСОВАНО}{}
+            & &
+            УТВЕРЖДАЮ
+            \\
+            \ifbool{isAgreed}{\AgreedInformation@Value}{}
+            & &
+            \ApprovedInformation@Value
+        \end{tabular}
+        \begin{tabular}{
+            p{0.2\textwidth}
+            p{0.03\textwidth}
+            p{0.22\textwidth}
+            p{0.1\textwidth}
+            p{0.2\textwidth}
+            p{0.03\textwidth}
+            p{0.22\textwidth}
+        }
+            \ifbool{isAgreed}{
+                \rule[-2mm]{0.2\textwidth}{0.2mm}
+                \newline
+                \centering{\footnotesize{подпись}}
+            }{}
+            & &
+            \ifbool{isAgreed}{
+                \ifbool{isAgreedFullName}{
+                    \AgreedFullName@Value
+                }{
+                    \rule[-2mm]{0.22\textwidth}{0.2mm}
+                    \newline
+                    \centering{\footnotesize{расшифровка подписи}}
+                }
+            }{}
+            & &
             \rule[-2mm]{0.2\textwidth}{0.2mm}
             \newline
             \centering{\footnotesize{подпись}}
-        }{}
-        & &
-        \ifbool{isAgreed}{
-            \ifbool{isAgreedFullName}{
-                \AgreedFullName@Value
+            & &
+            \ifbool{isApprovedFullName}{
+                \ApprovedFullName@Value
             }{
                 \rule[-2mm]{0.22\textwidth}{0.2mm}
                 \newline
                 \centering{\footnotesize{расшифровка подписи}}
             }
-        }{}
-        & &
-        \rule[-2mm]{0.2\textwidth}{0.2mm}
-        \newline
-        \centering{\footnotesize{подпись}}
-        & &
-        \ifbool{isApprovedFullName}{
-            \ApprovedFullName@Value
-        }{
-            \rule[-2mm]{0.22\textwidth}{0.2mm}
-            \newline
-            \centering{\footnotesize{расшифровка подписи}}
+        \end{tabular}
+        \begin{tabular}{
+            p{0.4\textwidth}
+            p{0.2\textwidth}
+            p{0.4\textwidth}
         }
-    \end{tabular}
-    \begin{tabular}{
-        p{0.4\textwidth}
-        p{0.2\textwidth}
-        p{0.4\textwidth}
-    }
-        \ifbool{isAgreed}{
+            \ifbool{isAgreed}{
+                \rule[-2mm]{0.4\textwidth}{0.2mm}
+                \newline
+                \centering{\footnotesize{дата}}
+            }{}
+            & &
             \rule[-2mm]{0.4\textwidth}{0.2mm}
             \newline
             \centering{\footnotesize{дата}}
+        \end{tabular}
+        
+        \vspace{2em}
+        
+        \centering{ \MakeUppercase{отчет \\ о научно-исследовательской работе} }
+        
+        \vspace{2em}
+        
+        \NirReportName@Value
+        
+        (\ReportType@Value)
+        
+        \vspace{2em}
+        
+        \notblank{\FederalProgramName@Value}{
+            \FederalProgramName@Value
         }{}
-        & &
-        \rule[-2mm]{0.4\textwidth}{0.2mm}
-        \newline
-        \centering{\footnotesize{дата}}
-    \end{tabular}
-    
-    \vspace{2em}
-    
-    \centering{ \MakeUppercase{отчет \\ о научно-исследовательской работе} }
-    
-    \vspace{2em}
-    
-    \NirReportName@Value
-    
-    (\ReportType@Value)
-    
-    \vspace{2em}
-    
-    \notblank{\FederalProgramName@Value}{
-        \FederalProgramName@Value
-    }{}
-    
-    \notblank{\BookNumber@Value}{
-        Книга~\BookNumber@Value
-    }{}
+        
+        \notblank{\BookNumber@Value}{
+            Книга~\BookNumber@Value
+        }{}
 
-    \vfill
-    
-    \begin{tabular}{
-        b{0.2\textwidth} 
-        b{0.25\textwidth} 
-        b{0.1\textwidth} 
-        b{0.2\textwidth}
-        b{0.25\textwidth}
-    }
-        \empty
-        &
-        Руководитель НИР,
-        \newline
-        \HeadOfResearch@Position@Value
-        \newline
-        \empty
-        & &
-        \rule[-1mm]{0.2\textwidth}{0.2mm}
-        \newline
-        \centering\footnotesize{подпись, дата} & ~\HeadOfResearch@FullName@Value
-        \newline
-        \footnotesize{\empty}
-    \end{tabular}
-    
-    \vfill
-    
-    \PlaceAndYear@Value
-    
-\end{titlepage}
+        \vfill
+        
+        \begin{tabular}{
+            b{0.2\textwidth} 
+            b{0.25\textwidth} 
+            b{0.1\textwidth} 
+            b{0.2\textwidth}
+            b{0.25\textwidth}
+        }
+            \empty
+            &
+            Руководитель НИР,
+            \newline
+            \HeadOfResearch@Position@Value
+            \newline
+            \empty
+            & &
+            \rule[-1mm]{0.2\textwidth}{0.2mm}
+            \newline
+            \centering\footnotesize{подпись, дата} & ~\HeadOfResearch@FullName@Value
+            \newline
+            \footnotesize{\empty}
+        \end{tabular}
+        
+        \vfill
+        
+        \PlaceAndYear@Value
+        
+    \end{titlepage}
 }
 
 % Список исполнителей
@@ -222,59 +222,64 @@
     \\ & & \\
 }
 \newcommand{\Executors}[1]{
-\begin{singlespacing}
-    \chapter*{СПИСОК ИСПОЛНИТЕЛЕЙ}
-    \setlength{\tabcolsep}{0pt}
-    \begin{longtable}{
-    b{0.35\textwidth} 
-    b{0.3\textwidth} 
-    b{0.35\textwidth}
-    }
-        Руководитель НИР, & & \\
-        \row[\HeadOfResearch@Chapters@Value]{\HeadOfResearch@Position@Value}{\HeadOfResearch@FullName@Value}
+    \begin{singlespacing}
+        \chapter*{СПИСОК ИСПОЛНИТЕЛЕЙ}
+        \setlength{\tabcolsep}{0pt}
+        \begin{longtable}{
+        b{0.35\textwidth} 
+        b{0.3\textwidth} 
+        b{0.35\textwidth}
+        }
+            Руководитель НИР, & & \\
+            \row[\HeadOfResearch@Chapters@Value]{\HeadOfResearch@Position@Value}{\HeadOfResearch@FullName@Value}
 
-        \input{#1}
+            \input{#1}
 
-    \end{longtable}
-    \setlength{\tabcolsep}{6pt}
-\end{singlespacing}
+        \end{longtable}
+        \setlength{\tabcolsep}{6pt}
+    \end{singlespacing}
 }
 
 % Реферат
 \newcommand{\Referat}[1]{
-\chapter*{РЕФЕРАТ}
+    \chapter*{РЕФЕРАТ}
 
-\input{#1}
-}
-
-% Термины и определения
-\newcommand{\Defines}[1]{
-\chapter*{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}
-
-В настоящем отчете о НИР применяют следующие термины с соответствующими определениями.
-\begin{itemize}[label=\empty,labelindent=0pt,itemindent=0pt]
     \input{#1}
-\end{itemize}
+    }
+
+    % Термины и определения
+    \newcommand{\Defines}[1]{
+    \chapter*{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}
+
+    В настоящем отчете о НИР применяют следующие термины с соответствующими определениями.
+    \begin{itemize}[label=\empty,labelindent=0pt,itemindent=0pt]
+        \input{#1}
+    \end{itemize}
 }
 
 % Перечень сокращений и обозначений
 \newcommand{\Abbreviations}[1]{
-\chapter*{ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ}
+    \chapter*{ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ}
 
-В настоящем отчете о НИР применяют следующие сокращения и обозначения.
-\begin{itemize}[label=\empty,labelindent=0pt,itemindent=0pt]
-    \input{#1}
-\end{itemize}
+    В настоящем отчете о НИР применяют следующие сокращения и обозначения.
+    \begin{itemize}[label=\empty,labelindent=0pt,itemindent=0pt]
+        \input{#1}
+    \end{itemize}
 }
 
 % Введение
 \newcommand{\Introduction}[1]{
-\chapter{ВВЕДЕНИЕ}
+    \chapter{ВВЕДЕНИЕ}
 
-\input{#1}
+    \input{#1}
 }
+
 % Заключение
-\newcommand\Conclusion{\chapter{ЗАКЛЮЧЕНИЕ}}
+\newcommand{\Conclusion}[1]{
+    \chapter{ЗАКЛЮЧЕНИЕ}
+
+    \input{#1}
+}
 
 
 % Элементы титульной страницы
