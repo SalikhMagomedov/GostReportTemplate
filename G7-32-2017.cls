@@ -252,13 +252,20 @@
 \chapter*{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}
 
 В настоящем отчете о НИР применяют следующие термины с соответствующими определениями.
-
 \begin{itemize}[label=\empty,labelindent=0pt,itemindent=0pt]
     \input{#1}
 \end{itemize}
 }
+
 % Перечень сокращений и обозначений
-\newcommand\Abbreviations{\chapter*{ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ}}
+\newcommand{\Abbreviations}[1]{
+\chapter*{ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ}
+
+В настоящем отчете о НИР применяют следующие сокращения и обозначения.
+\begin{itemize}[label=\empty,labelindent=0pt,itemindent=0pt]
+    \input{#1}
+\end{itemize}
+}
 % Введение
 \newcommand\Introduction{\chapter{ВВЕДЕНИЕ}}
 % Заключение
