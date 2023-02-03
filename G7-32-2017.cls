@@ -60,14 +60,40 @@
 % COMMANDS
 
 
-% Именование структурных элементов
+% Cтруктурные элементы
 
 % Список исполнителей
-\newcommand\Executors{\chapter*{СПИСОК ИСПОЛНИТЕЛЕЙ}}
+% Команда для построения строки исполнителя в списке исполнителей
+\newcommand{\row}[3][]{%
+    \small{#2}
+    \newline &
+    \centering{\rule[-2mm]{0.29\textwidth}{0.2mm}}
+    \centering{\footnotesize{подпись, дата}} &
+    #3
+    \newline
+    \footnotesize{\notblank{#1}{(#1)}{}} 
+    \\ & & \\
+}
+\newcommand{\Executors}[1]{
+\begin{singlespacing}
+    \chapter*{СПИСОК ИСПОЛНИТЕЛЕЙ}
+    \setlength{\tabcolsep}{0pt}
+    \begin{longtable}{
+    b{0.35\textwidth} 
+    b{0.3\textwidth} 
+    b{0.35\textwidth}
+    }
+        Руководитель НИР, & & \\
+        \row[\HeadOfResearch@Chapters@Value]{\HeadOfResearch@Position@Value}{\HeadOfResearch@FullName@Value}
+
+        \input{#1}
+
+    \end{longtable}
+    \setlength{\tabcolsep}{6pt}
+\end{singlespacing}
+}
 % Реферат
 \newcommand\Referat{\chapter*{РЕФЕРАТ}}
-% Содержание
-\addto\captionsrussian{\renewcommand{\contentsname}{СОДЕРЖАНИЕ}}
 % Термины и определения
 \newcommand\Defines{\chapter*{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}}
 % Перечень сокращений и обозначений
@@ -174,47 +200,18 @@
 \newcommand{\HeadOfResearch@Position@Value}{}
 % ФИО
 \newcommand{\HeadOfResearch@FullName@Value}{}
+% № раздела
+\newcommand{\HeadOfResearch@Chapters@Value}{}
 % 
-\newcommand{\HeadOfResearch}[2]{
-    \renewcommand{\HeadOfResearch@Position@Value}{#1}
-    \renewcommand{\HeadOfResearch@FullName@Value}{#2}
+\newcommand{\HeadOfResearch}[3][]{
+    \renewcommand{\HeadOfResearch@Chapters@Value}{#1}
+    \renewcommand{\HeadOfResearch@Position@Value}{#2}
+    \renewcommand{\HeadOfResearch@FullName@Value}{#3}
 }
 % Место Год
 \newcommand{\PlaceAndYear@Value}{}
 \newcommand{\PlaceAndYear}[2]{
     \renewcommand{\PlaceAndYear@Value}{#1~#2}
-}
-
-
-% Список исполнителей
-% Команда для построения строки исполнителя в списке исполнителей
-\newcommand{\row}[3][]{%
-\small{#2}
-\newline &
-    \centering{\rule[-2mm]{0.29\textwidth}{0.2mm}}
-    \centering{\footnotesize{подпись, дата}} &
-    #3
-    \newline
-    \footnotesize{\notblank{#1}{(#1)}{}} 
-    \\ & & \\
-}
-% Окружение списка исполнителей
-\newenvironment{executors}[1][]{
-    \begin{singlespacing}
-    \Executors
-    \setlength{\tabcolsep}{0pt}
-    \begin{longtable}{
-        b{0.35\textwidth} 
-        b{0.3\textwidth} 
-        b{0.35\textwidth}
-    }
-        
-        Руководитель НИР, & & \\
-        \row[#1]{\HeadOfResearch@Position@Value}{\HeadOfResearch@FullName@Value}
-}{
-    \end{longtable}
-    \setlength{\tabcolsep}{6pt}
-    \end{singlespacing}
 }
 
 
@@ -284,6 +281,8 @@
 
 
 % Именование структурных элементов
+% Содержание
+\addto\captionsrussian{\renewcommand{\contentsname}{СОДЕРЖАНИЕ}}
 % Список использованных источников
 \addto\captionsrussian{\renewcommand{\bibname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}}
 % Приложение
