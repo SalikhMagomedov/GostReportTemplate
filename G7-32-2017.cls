@@ -48,6 +48,8 @@
 \RequirePackage{longtable}
 \RequirePackage{totcount}
 \RequirePackage{xassoccnt}
+% Пакет для настройти enumerate и itemize
+\RequirePackage{enumitem}
 % Объявление комманд для отделения структурных элементов от разделов отчета
 \newcommand{\frontmatter}{}
 \newcommand{\mainmatter}{}
@@ -244,8 +246,17 @@
 
 \input{#1}
 }
+
 % Термины и определения
-\newcommand\Defines{\chapter*{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}}
+\newcommand{\Defines}[1]{
+\chapter*{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}
+
+В настоящем отчете о НИР применяют следующие термины с соответствующими определениями.
+
+\begin{itemize}[label=\empty,labelindent=0pt,itemindent=0pt]
+    \input{#1}
+\end{itemize}
+}
 % Перечень сокращений и обозначений
 \newcommand\Abbreviations{\chapter*{ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ}}
 % Введение
