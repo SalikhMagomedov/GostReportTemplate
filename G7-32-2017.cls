@@ -62,6 +62,151 @@
 
 % Cтруктурные элементы
 
+% Титульный лист
+\newcommand{\TitlePage}[1]{
+\input{#1}
+\begin{titlepage}
+    
+    \centering{
+    
+        \MinistryName@Value
+        
+        \OrganizationName@Value
+
+    }
+    
+    \vspace{2em}
+    
+    \raggedright{
+    
+        УДК~\UdkIndex@Value
+        
+        Рег.~№~НИОКТР~\NioktrRegistrationNumber@Value
+        
+        Рег.~№~ИКРБС\notblank{\IkrbsRegistrationNumber@Value}{~\IkrbsRegistrationNumber@Value}{}
+    
+    }
+    
+    \vspace{2em}
+    
+    \setlength{\tabcolsep}{0pt}
+    \begin{tabular}{
+        p{0.45\textwidth}
+        p{0.1\textwidth}
+        p{0.45\textwidth}
+    }
+        \ifbool{isAgreed}{СОГЛАСОВАНО}{}
+        & &
+        УТВЕРЖДАЮ
+        \\
+        \ifbool{isAgreed}{\AgreedInformation@Value}{}
+        & &
+        \ApprovedInformation@Value
+    \end{tabular}
+    \begin{tabular}{
+        p{0.2\textwidth}
+        p{0.03\textwidth}
+        p{0.22\textwidth}
+        p{0.1\textwidth}
+        p{0.2\textwidth}
+        p{0.03\textwidth}
+        p{0.22\textwidth}
+    }
+        \ifbool{isAgreed}{
+            \rule[-2mm]{0.2\textwidth}{0.2mm}
+            \newline
+            \centering{\footnotesize{подпись}}
+        }{}
+        & &
+        \ifbool{isAgreed}{
+            \ifbool{isAgreedFullName}{
+                \AgreedFullName@Value
+            }{
+                \rule[-2mm]{0.22\textwidth}{0.2mm}
+                \newline
+                \centering{\footnotesize{расшифровка подписи}}
+            }
+        }{}
+        & &
+        \rule[-2mm]{0.2\textwidth}{0.2mm}
+        \newline
+        \centering{\footnotesize{подпись}}
+        & &
+        \ifbool{isApprovedFullName}{
+            \ApprovedFullName@Value
+        }{
+            \rule[-2mm]{0.22\textwidth}{0.2mm}
+            \newline
+            \centering{\footnotesize{расшифровка подписи}}
+        }
+    \end{tabular}
+    \begin{tabular}{
+        p{0.4\textwidth}
+        p{0.2\textwidth}
+        p{0.4\textwidth}
+    }
+        \ifbool{isAgreed}{
+            \rule[-2mm]{0.4\textwidth}{0.2mm}
+            \newline
+            \centering{\footnotesize{дата}}
+        }{}
+        & &
+        \rule[-2mm]{0.4\textwidth}{0.2mm}
+        \newline
+        \centering{\footnotesize{дата}}
+    \end{tabular}
+    
+    \vspace{2em}
+    
+    \centering{ \MakeUppercase{отчет \\ о научно-исследовательской работе} }
+    
+    \vspace{2em}
+    
+    \NirReportName@Value
+    
+    (\ReportType@Value)
+    
+    \vspace{2em}
+    
+    \notblank{\FederalProgramName@Value}{
+        \FederalProgramName@Value
+    }{}
+    
+    \notblank{\BookNumber@Value}{
+        Книга~\BookNumber@Value
+    }{}
+
+    \vfill
+    
+    \begin{tabular}{
+        b{0.2\textwidth} 
+        b{0.25\textwidth} 
+        b{0.1\textwidth} 
+        b{0.2\textwidth}
+        b{0.25\textwidth}
+    }
+        \empty
+        &
+        Руководитель НИР,
+        \newline
+        \HeadOfResearch@Position@Value
+        \newline
+        \empty
+        & &
+        \rule[-1mm]{0.2\textwidth}{0.2mm}
+        \newline
+        \centering\footnotesize{подпись, дата} & ~\HeadOfResearch@FullName@Value
+        \newline
+        \footnotesize{\empty}
+    \end{tabular}
+    
+    \vfill
+    
+    \PlaceAndYear@Value
+    
+\end{titlepage}
+}
+
 % Список исполнителей
 % Команда для построения строки исполнителя в списке исполнителей
 \newcommand{\row}[3][]{%
@@ -92,8 +237,13 @@
     \setlength{\tabcolsep}{6pt}
 \end{singlespacing}
 }
+
 % Реферат
-\newcommand\Referat{\chapter*{РЕФЕРАТ}}
+\newcommand{\Referat}[1]{
+\chapter*{РЕФЕРАТ}
+
+\input{#1}
+}
 % Термины и определения
 \newcommand\Defines{\chapter*{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}}
 % Перечень сокращений и обозначений
@@ -248,7 +398,6 @@
 }
 % Окружение реферата
 \apptocmd{\KeyWords}{
-    \Referat %Реферат отчёта, не более 1 страницы
     % Добавление счетчика к табличам
     \AddAssociatedCounters{table}{totaltables}
 
@@ -287,151 +436,6 @@
 \addto\captionsrussian{\renewcommand{\bibname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}}
 % Приложение
 \addto\captionsrussian{\renewcommand{\appendixname}{ПРИЛОЖЕНИЕ}}
-
-
-% Добавление титульной страницы к началу документа
-\AtBeginDocument{
-    \begin{titlepage}
-        
-        \centering{
-        
-            \MinistryName@Value
-            
-            \OrganizationName@Value
-
-        }
-        
-        \vspace{2em}
-        
-        \raggedright{
-        
-            УДК~\UdkIndex@Value
-            
-            Рег.~№~НИОКТР~\NioktrRegistrationNumber@Value
-            
-            Рег.~№~ИКРБС\notblank{\IkrbsRegistrationNumber@Value}{~\IkrbsRegistrationNumber@Value}{}
-        
-        }
-        
-        \vspace{2em}
-        
-        \setlength{\tabcolsep}{0pt}
-        \begin{tabular}{
-            p{0.45\textwidth}
-            p{0.1\textwidth}
-            p{0.45\textwidth}
-        }
-            \ifbool{isAgreed}{СОГЛАСОВАНО}{}
-            & &
-            УТВЕРЖДАЮ
-            \\
-            \ifbool{isAgreed}{\AgreedInformation@Value}{}
-            & &
-            \ApprovedInformation@Value
-        \end{tabular}
-        \begin{tabular}{
-            p{0.2\textwidth}
-            p{0.03\textwidth}
-            p{0.22\textwidth}
-            p{0.1\textwidth}
-            p{0.2\textwidth}
-            p{0.03\textwidth}
-            p{0.22\textwidth}
-        }
-            \ifbool{isAgreed}{
-                \rule[-2mm]{0.2\textwidth}{0.2mm}
-                \newline
-                \centering{\footnotesize{подпись}}
-            }{}
-            & &
-            \ifbool{isAgreed}{
-                \ifbool{isAgreedFullName}{
-                    \AgreedFullName@Value
-                }{
-                    \rule[-2mm]{0.22\textwidth}{0.2mm}
-                    \newline
-                    \centering{\footnotesize{расшифровка подписи}}
-                }
-            }{}
-            & &
-            \rule[-2mm]{0.2\textwidth}{0.2mm}
-            \newline
-            \centering{\footnotesize{подпись}}
-            & &
-            \ifbool{isApprovedFullName}{
-                \ApprovedFullName@Value
-            }{
-                \rule[-2mm]{0.22\textwidth}{0.2mm}
-                \newline
-                \centering{\footnotesize{расшифровка подписи}}
-            }
-        \end{tabular}
-        \begin{tabular}{
-            p{0.4\textwidth}
-            p{0.2\textwidth}
-            p{0.4\textwidth}
-        }
-            \ifbool{isAgreed}{
-                \rule[-2mm]{0.4\textwidth}{0.2mm}
-                \newline
-                \centering{\footnotesize{дата}}
-            }{}
-            & &
-            \rule[-2mm]{0.4\textwidth}{0.2mm}
-            \newline
-            \centering{\footnotesize{дата}}
-        \end{tabular}
-        
-        \vspace{2em}
-        
-        \centering{ \MakeUppercase{отчет \\ о научно-исследовательской работе} }
-        
-        \vspace{2em}
-        
-        \NirReportName@Value
-        
-        (\ReportType@Value)
-        
-        \vspace{2em}
-        
-        \notblank{\FederalProgramName@Value}{
-            \FederalProgramName@Value
-        }{}
-        
-        \notblank{\BookNumber@Value}{
-            Книга~\BookNumber@Value
-        }{}
-
-        \vfill
-        
-        \begin{tabular}{
-            b{0.2\textwidth} 
-            b{0.25\textwidth} 
-            b{0.1\textwidth} 
-            b{0.2\textwidth}
-            b{0.25\textwidth}
-        }
-            \empty
-            &
-            Руководитель НИР,
-            \newline
-            \HeadOfResearch@Position@Value
-            \newline
-            \empty
-            & &
-            \rule[-1mm]{0.2\textwidth}{0.2mm}
-            \newline
-            \centering\footnotesize{подпись, дата} & ~\HeadOfResearch@FullName@Value
-            \newline
-            \footnotesize{\empty}
-        \end{tabular}
-        
-        \vfill
-        
-        \PlaceAndYear@Value
-        
-    \end{titlepage}
-}
 
 
 % Настройки реферата

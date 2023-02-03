@@ -50,16 +50,20 @@
 % \input{content/commands.tex}
 % \usepackage[shortlabels]{enumitem}
 
-% Титульная страница
-\input{content/titlePage}
 
 % %%%%%%%<------------- НАЧАЛО ДОКУМЕНТА
 \begin{document}
 
+% Руководитель НИР
+\HeadOfResearch[№ раздела]{должность}{И.О.~Фамилия}
+
+% Титульная страница
+\TitlePage{content/titlePage}
+
 \frontmatter
 
 \Executors{content/executors.tex}
-\input{content/referat.tex}
+\Referat{content/referat.tex}
 
 \tableofcontents
 
