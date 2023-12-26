@@ -36,13 +36,16 @@
 \ifbool{isXelatex}{
     \RequirePackage{fontspec} 
     \setromanfont{Times New Roman} 
+    \RequirePackage{polyglossia}
+    \setdefaultlanguage{russian}
+    \setotherlanguage{english}
 }{
     \RequirePackage{cmap} 
     \RequirePackage[T2A, T1]{fontenc} 
     \RequirePackage[utf8]{inputenc} 
     \RequirePackage{tempora} 
+    \RequirePackage[english,russian]{babel}
 }
-\RequirePackage[english,russian]{babel}
 \RequirePackage{amsmath}
 \RequirePackage{array}
 \RequirePackage{longtable}

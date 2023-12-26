@@ -1,43 +1,43 @@
-\newtheorem{theorem}{Теорема}[chapter]
-\newtheorem*{theorem*}{Теорема}
-\newtheorem*{lemma*}{Лемма}
-\newtheorem{property}{Свойство}
-\newtheorem{lemma}{Лемма}[chapter]
-\newtheorem{statement}{Утверждение}[chapter]
-\newtheorem{definition}{Определение}[chapter]
-\newtheorem{example}{Пример}[chapter]
-\newtheorem{corollary}{Следствие}[chapter]
-\newtheorem*{corollary*}{Следствие}
-\newtheorem{remark}{Замечание}[chapter]
-\newtheorem*{remark*}{Замечание}
-\newtheorem{hypothesis}{Гипотеза}[chapter]
+% \newtheorem{theorem}{Теорема}[chapter]
+% \newtheorem*{theorem*}{Теорема}
+% \newtheorem*{lemma*}{Лемма}
+% \newtheorem{property}{Свойство}
+% \newtheorem{lemma}{Лемма}[chapter]
+% \newtheorem{statement}{Утверждение}[chapter]
+% \newtheorem{definition}{Определение}[chapter]
+% \newtheorem{example}{Пример}[chapter]
+% \newtheorem{corollary}{Следствие}[chapter]
+% \newtheorem*{corollary*}{Следствие}
+% \newtheorem{remark}{Замечание}[chapter]
+% \newtheorem*{remark*}{Замечание}
+% \newtheorem{hypothesis}{Гипотеза}[chapter]
 
-\newtheorem{cond}{Условие}
-\newtheorem{theoremA}{Теорема}
-\newtheorem{lemmaA}{Лемма}[section]
-\newtheorem{state}{Предложение}
-\newtheorem{proposition}{Предложение}
-\renewcommand{\thetheoremA}{\Alph{theoremA}}
-\renewcommand{\thelemmaA}{\thesection.\Alph{lemmaA}}
-\newcommand{\No}{\textnumero}
+% \newtheorem{cond}{Условие}
+% \newtheorem{theoremA}{Теорема}
+% \newtheorem{lemmaA}{Лемма}[section]
+% \newtheorem{state}{Предложение}
+% \newtheorem{proposition}{Предложение}
+% \renewcommand{\thetheoremA}{\Alph{theoremA}}
+% \renewcommand{\thelemmaA}{\thesection.\Alph{lemmaA}}
+% \newcommand{\No}{\textnumero}
 
-\newcommand{\norm}[1]{\|#1\|_{p(\cdot),w}}
-\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+% \newcommand{\norm}[1]{\|#1\|_{p(\cdot),w}}
+% \newcommand{\ip}[2]{\langle #1, #2 \rangle}
 
-\DeclareMathOperator*{\esssup}{ess\,sup}
-\DeclareMathOperator*{\essinf}{ess\,inf}
+% \DeclareMathOperator*{\esssup}{ess\,sup}
+% \DeclareMathOperator*{\essinf}{ess\,inf}
 
-\numberwithin{equation}{chapter} %
-\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+% \numberwithin{equation}{chapter} %
+% \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
-\newenvironment{description}{}{}
+% \newenvironment{description}{}{}
 
-\newcommand{\ifNotEmpty}[2] {
-    \ifx&#1& \empty \else #2 \fi
-}
+% \newcommand{\ifNotEmpty}[2] {
+%     \ifx&#1& \empty \else #2 \fi
+% }
 
-\newcommand{\row}[3][]{
-    \small{#2}&
-    \centering{\rule[-2mm]{5cm}{0.2mm}} \newline \centering \footnotesize{{подпись, дата}} &
-    #3 \newline \small{{\ifNotEmpty{#1}{(#1)}}} \\ & & \\
-}
+% \newcommand{\row}[3][]{
+%     \small{#2}&
+%     \centering{\rule[-2mm]{5cm}{0.2mm}} \newline \centering \footnotesize{{подпись, дата}} &
+%     #3 \newline \small{{\ifNotEmpty{#1}{(#1)}}} \\ & & \\
+% }
