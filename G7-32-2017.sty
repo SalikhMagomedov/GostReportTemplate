@@ -194,6 +194,9 @@
 % Установка значения глубины вложенности содержания
 \setcounter{tocdepth}{2}
 
+% Добавление списка использованных источников в содержание
+\apptocmd{\thebibliography}{\csname phantomsection\endcsname\addcontentsline{toc}{chapter}{\bibname}}{}{}
+
 % Добавление точек для структурных элементов и разделов
 \titlecontents{chapter}
 [0pt] % left
